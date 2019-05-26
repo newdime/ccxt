@@ -20,12 +20,20 @@ RUN apt-get -y install nodejs
 # Python 2
 RUN apt-get install -y python-pip
 RUN pip2 install --upgrade setuptools requests[security]
-RUN pip2 install pandas
+# RUN pip2 install pandas
 
 # Python 3
 RUN apt-get install -y python3 python3-pip
 RUN pip3 install --upgrade six setuptools wheel pyopenssl tox twine
-RUN pip3 install pandas
+# RUN pip3 install pandas
+
+# anaconda 3
+RUN cd /tmp
+RUN curl -O https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
+RUN bash Anaconda3-2019.03-Linux-x86_64.sh -b
+RUN source ~/anaconda3/bin/activate
+RUN conda init
+#RUN conda init
 
 # Copy files to workdir to run install scripts against it (will be replaced with a live-mounted volume at startup)
 RUN mkdir -p /ccxt

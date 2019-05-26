@@ -5,6 +5,8 @@ import sys
 import asciichart
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+
 
 # -----------------------------------------------------------------------------
 
@@ -37,20 +39,31 @@ def print_chart(exchange, symbol, timeframe):
 
     # get the ohlCv (closing price, index == 4)
     series = [x[index] for x in ohlcv]
-    #time = [t[0] for t in ohlcv]
+    time = [t[0] for t in ohlcv]
 
-    #tframe = pd.DataFrame(time)
-    #frame = pd.DataFrame(series)
+    tframe = pd.DataFrame(time)
+    frame = pd.DataFrame(series)
     #print("enter")
-    #print("\n" + frame)
-    #print("\n" + tframe[tframe.shape[0]-20:])
-    #pd.plot(frame, tframe)
+    print("\n" + frame[-2:].to_string())
+    print("\n" + tframe[-2:].to_string())
+
+    #ts = pd.Series(frame[-150:], tframe[-150:])
+    #ts = ts.cumsum()
+    #ts.plot()
+
+    #ts = pd.Series(np.random.randn(1000),
+    #index=pd.date_range('1/1/2000', periods=1000))
+
+    #ts = ts.cumsum()
+    fig = plt.figure()
+    #plt.plot(1,1)
+    #plt.show()
 
     # print the chart
     print("\n" + asciichart.plot(series[-150:], {'height': 20}))  # print the chart
 
     last = ohlcv[len(ohlcv) - 1][index]  # last closing price
-    return last 
+    return last
 
 #def panPrint(exchange, symbol, timeframe):
 
