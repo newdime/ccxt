@@ -31,8 +31,9 @@ RUN pip3 install --upgrade six setuptools wheel pyopenssl tox twine
 RUN cd /tmp
 RUN curl -O https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
 RUN bash Anaconda3-2019.03-Linux-x86_64.sh -b
-RUN source ~/anaconda3/bin/activate
-RUN conda init
+RUN cd ..
+RUN export PATH=~/anaconda3/bin:$PATH
+#RUN source ~/anaconda3/bin/activate
 #RUN conda init
 
 # Copy files to workdir to run install scripts against it (will be replaced with a live-mounted volume at startup)
