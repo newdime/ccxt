@@ -47,7 +47,7 @@ def print_chart(exchange, symbol, timeframe):
     print("\n" + frame[-2:].to_string())
     print("\n" + tframe[-2:].to_string())
 
-    #ts = pd.Series(frame[-150:], tframe[-150:])
+        #ts = pd.Series(frame[-150:], tframe[-150:])
     #ts = ts.cumsum()
     #ts.plot()
 
